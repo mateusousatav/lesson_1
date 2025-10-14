@@ -32,3 +32,15 @@ function testLet() {
 
 console.log(testLet()); // prints 20
 console.log(y); // prints 10
+
+//-------------------------------------------------------------------
+//const
+
+const z = 10;
+
+function testConst() {
+  const z = 20; // block-scoped
+  return z;    // prints 20
+}
+console.log(testConst()); // prints 20
+console.log(z);           // prints 10
