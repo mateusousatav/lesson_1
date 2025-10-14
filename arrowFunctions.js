@@ -8,7 +8,7 @@ console.log(calculateCircleArea(3)); // 28.27 (approx)
 Extension: Add input validation — if any parameter is negative, return "Invalid input".
 */
 
-function calculateRectangleArea(length, width) {
+calculateRectangleArea = (length, width) => {
     if(length < 0 || width < 0) {
         return "Invalid input";
     } else {
@@ -16,11 +16,11 @@ function calculateRectangleArea(length, width) {
     }
 }
 
-function calculateCircleArea(radius) {
+calculateCircleArea = (radius) => {
     if(radius < 0) {
         return "Invalid input";
     } else {
-    return "The area of the circle is: " + (Math.PI * radius * radius);
+        return "The area of the circle is: " + (Math.PI * radius * radius);
     }
 }
 
@@ -46,7 +46,7 @@ console.log(gradeCategory(58)); // "F"
 Extension: Modify the function to return "Invalid score" if input is not between 0 and 100.
 */
 
-function gradeCategory(score) {
+gradeCategory = (score) => {
     if(score < 0 || score > 100) {
         return "Invalid score";
     } else if(score >= 90) {
@@ -78,7 +78,7 @@ console.log(countVowels("Javascript")); // 3
 Extension: Make the function case-insensitive and handle empty strings gracefully.
 */
 
-function countVowels(word) {
+countVowels = (word) => {
     if(word.length == 0) {
         return 0;
     }
@@ -110,7 +110,7 @@ Extension: Try rewriting it using map() instead of a for loop.
 
 let array = [1, 2, 3, 4, 5, 6, 7, 8, -9, 10, 5, 0];
 
-function doubleNumbers(numbers) {
+doubleNumbers = (numbers) => {
     let newArr = new Array(numbers.length);
     for(let i = 0; i < numbers.length; i++) {
         newArr[i] = numbers[i] *2 ;
@@ -123,7 +123,7 @@ console.log(doubleNumbers(array));
 /*Functions Calling Functions
  Write two functions:
 fahrenheitToCelsius(f) → converts Fahrenheit to Celsius
-describeTemperature(f) → calls fahrenheitToCelsius and returns a message:
+dscribeTemperature(f) → calls fahrenheitToCelsius and returns a message:
 
 Below 0°C → "Freezing!"
 0–20°C → "Cold"
@@ -136,11 +136,9 @@ console.log(describeTemperature(68)); // "Cold"
 console.log(describeTemperature(95)); // "Hot"
 */
 
-function fahrenheitToCelsius(f) {
-    return  (f - 32) * 5/9;
-}
+fahrenheitToCelsius = (f) => (f - 32) * 5/9;
 
-function describeTemperature(f) {
+describeTemperature = (f) => {
     let c = fahrenheitToCelsius(f);
     if(c <= 0) {
         return "Freezing!";
