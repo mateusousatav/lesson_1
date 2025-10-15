@@ -47,19 +47,12 @@ Extension: Modify the function to return "Invalid score" if input is not between
 */
 
 gradeCategory = (score) => {
-    if(score < 0 || score > 100) {
-        return "Invalid score";
-    } else if(score >= 90) {
-        return "A";
-    } else if(score >= 80) {
-        return "B";
-    } else if(score >= 70) {
-        return "C";
-    } else if(score >= 60) {
-        return "D";
-    } else {
-        return "F";
-    }
+    (score < 0 || score > 100) ? "Invalid score" : 
+    (score >= 90)? "A" : 
+    (score >= 80)? "B" :
+    (score >= 70)? "C" :
+    (score >= 60)? "D" :
+    "F";
 }
 
 console.log(gradeCategory(95)); // "A"
