@@ -72,12 +72,12 @@ acc.withdraw(30);
 console.log(acc.getBalance()); // "Balance: $120"
 
 /*Class Inheritance
-Create a class Person with properties name and age, and a method introduce() that says "Hi, I’m [name], and I’m [age] years old."
+Create a class Person with properties name and age, and a method introduce() that says "Hi, I'm [name], and I'm [age] years old."
 Then create a subclass Student that adds a grade property and overrides introduce() to include the grade.
 
 Test cases:
 const s1 = new Student("Maya", 17, "11th");
-console.log(s1.introduce()); // "Hi, I’m Maya, I’m 17 years old, and I’m in 11th grade."
+console.log(s1.introduce()); // "Hi, I'm Maya, I'm 17 years old, and I'm in 11th grade."
 
 Extension:
  Add a method promote() in Student that moves them to the next grade.
@@ -90,7 +90,7 @@ class Person {
     }
 
     introduce() {
-        return "Hi, I’m " + this.name + ", and I’m " + this.age + " years old.";
+        return "Hi, I'm " + this.name + ", and I'm " + this.age + " years old.";
     }
 }
 
@@ -101,16 +101,16 @@ class Student extends Person{
     }
 
     introduce() {
-        return "Hi, I’m " + this.name + ", and I’m " + this.age + " years old. I'm in " + this.grade + " grade";
+        return "Hi, I'm " + this.name + ", and I'm " + this.age + " years old. I'm in " + this.grade + " grade";
     }
 }
 
 const s1 = new Student("Maya", 17, "11th");
-console.log(s1.introduce()); // "Hi, I’m Maya, I’m 17 years old, and I’m in 11th grade."
+console.log(s1.introduce()); // "Hi, I'm Maya, I'm 17 years old, and I'm in 11th grade."
 
 /**Classes and Arrays
  Create a class Book with properties title, author, and pages.
- Then create an array of 3 Book objects and write a function listBooks() that loops through the array and logs each book’s title and author.
+ Then create an array of 3 Book objects and write a function listBooks() that loops through the array and logs each book's title and author.
 Test cases:
 const library = [
   new Book("1984", "George Orwell", 328),
@@ -139,11 +139,17 @@ class Book {
         return this.title + " by " + this.author;
     }
 
-    listBooks(array) {
-        let newArr = [];
-        
+    static listBooks(array) {
         for(let i = 0; i < array.length; i++) {
-            newArr.push(toString);
+            console.log(array[i].toString());
+        }
+    }
+    
+    static getShortBooks(array) {
+        for(let i = 0; i < array.length; i++) {
+            if(array[i].pages < 350) {
+                console.log(array[i].toString());
+            }
         }
     }
 }
@@ -154,9 +160,58 @@ const library = [
     new Book("Dune", "Frank Herbert", 412)
   ];
   
-  listBooks(library);
+  Book.listBooks(library);
+  Book.getShortBooks(library);
   // Output:
   // "1984 by George Orwell"
   // "The Hobbit by J.R.R. Tolkien"
   // "Dune by Frank Herbert"
-  
+ 
+/* Lab 5 — 
+ Create a class User with:
+a private field #password,
+
+
+a public username property, and
+
+
+methods setPassword(p) and checkPassword(p) that validate and return a success or failure message.
+
+
+Test cases:
+const u1 = new User("azahar");
+u1.setPassword("abc123");
+console.log(u1.checkPassword("abc123")); // "Access granted"
+console.log(u1.checkPassword("wrong")); // "Access denied"
+
+Extension:
+ Require that passwords be at least 6 characters long before setting.
+*/
+
+class User {
+    #password;
+    constructor(username) {
+        this.username = username;
+    }
+    
+    setPassword(p) {
+        if(p.length >= 6) {
+            this.#password = p;
+        } else {
+            return "Password not long enough. Try again.";
+        }
+    }
+    
+    checkPassword(p) {
+        if(p == this.#password) {
+            return "Access granted";
+        } else {
+            return "Access denied";
+        }
+    }
+}
+
+const u1 = new User("azahar");
+u1.setPassword("abc123");
+console.log(u1.checkPassword("abc123")); // "Access granted"
+console.log(u1.checkPassword("wrong")); // "Access denied"
